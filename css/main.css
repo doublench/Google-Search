@@ -95,22 +95,6 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* ==========================================================================
    Helper classes
    ========================================================================== */
@@ -198,9 +182,9 @@ textarea {
 }
 
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
     /* Style adjustments for high resolution devices */
 }
 
@@ -215,8 +199,9 @@ textarea {
     *:before,
     *:after {
         background: transparent !important;
-        color: #000 !important; /* Black prints faster:
-                                   http://www.sanbeiji.com/archives/953 */
+        color: #000 !important;
+        /* Black prints faster:
+                                          http://www.sanbeiji.com/archives/953 */
         box-shadow: none !important;
         text-shadow: none !important;
     }
@@ -238,7 +223,6 @@ textarea {
      * Don't show links that are fragment identifiers,
      * or use the `javascript:` pseudo protocol
      */
-
     a[href^="#"]:after,
     a[href^="javascript:"]:after {
         content: "";
@@ -254,7 +238,6 @@ textarea {
      * Printing Tables:
      * http://css-discuss.incutio.com/wiki/Printing_Tables
      */
-
     thead {
         display: table-header-group;
     }
@@ -279,4 +262,78 @@ textarea {
     h3 {
         page-break-after: avoid;
     }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #222;
+    font: 300 14px Roboto,Arial,Helvetica,sans-serif;
+    line-height: 1.4;
+    overflow: hidden;
+    position: relative;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+
+#navbar {
+    -webkit-box-shadow: 0 0 3px rgba(34, 34, 34, .6);
+    box-shadow: 0 0 3px rgba(34, 34, 34, .6);
+    background-color: #333;
+    color: #fff;
+    height: 60px;
+    position: relative;
+    width: 100%;
+    z-index: 110;
+}
+
+.ryjAXe-l4eHX {
+    display: inline-block;
+    float: left;
+    margin-right: 80px;
+}
+
+.ryjAXe-l4eHX-jcJzye {
+    height: 40px;
+    width: 40px;
+    background: no-repeat url(//maps.gstatic.com/mapfiles/photos/common-5eca22485bf474d2dfc4b3860c4e9cb7.png) -234px -80px;
+    float: left;
+    margin: 5px 6px 0 0;
+}
+
+.ryjAXe-l4eHX-fmcmS {
+    color: #ccc;
+    font: 300 22px "Open Sans";
+    line-height: 46px;
+    white-space: nowrap;
+}
+
+.ryjAXe-MgCxZb {
+    bottom: 5px;
+    left: 30px;
+    position: absolute;
+    right: 30px;
+    top: 5px;
+}
+
+::-webkit-scrollbar {
+    height: 8px;
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    min-height: 28px;
+    padding-top: 100px;
+    background-clip: padding-box;
+    background-color: #bbb;
+}
+
+::-webkit-scrollbar-button {
+    width: 0;
+    height: 0;
+}
+
+a {
+    background-color: transparent;
 }
