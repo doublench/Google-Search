@@ -3,8 +3,8 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Google Maps</title>
-        <meta name="description" content="Google Maps">
+        <title>Google Search</title>
+        <meta name="description" content="Google Search">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -14,10 +14,26 @@
 
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
-        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css">
-        <link href='http://fonts.googleapis.com/css?family=Open+Sans:300&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300&subset=cyrillic,latin' rel='stylesheet' type='text/css'>
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-        <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+                $(function () {
+                    $("#search").keyup(function () {
+                        var search = $("#search").val();
+                        $.ajax({
+                            type: "POST",
+                            url: "search.php",
+                            data: {"search": search},
+                            cache: false,
+                            success: function (response) {
+                                $("#resSearch").html(response);
+                            }
+                        });
+                        return false;
+                    });
+                });
+        </script>
     </head>
     <body>
         <!--[if lt IE 8]>
@@ -29,29 +45,21 @@
         <div id="navbar">
             <div class="ryjAXe-MgCxZb">
                     <div class="ryjAXe-l4eHX">
-                        <span class="ryjAXe-l4eHX-jcJzye"></span><span class="ryjAXe-l4eHX-fmcmS">Карта Москвы на leaflet.js (Zoom: x5, x4, x3)</span>
+                        <span class="ryjAXe-l4eHX-jcJzye"></span><span class="ryjAXe-l4eHX-fmcmS">Поисковик с Ajax выдачей</span>
                     </div>
                     <div class="ryjAXe-l4eHX_">
                     	<span class="ryjAXe-l4eHX-fmcmS">Руслан Лутфуллин</span>
                     </div>
             </div>
         </div>
-         <div id="map"></div>
 
-        <script>
-            var map = L.map('map').setView([70, -60], 3);
-            L.tileLayer('img/{z}/{y}x{x}.png',{
-            minZoom: 3,
-            maxZoom: 5,
-            attribution: '',
-            tms: false,
-            noWrap: true
-            }).addTo(map);
-        </script>
+        <form class="form-wrapper cf" action="search.php" method="post" name="form" onsubmit="return false;">
+            <input type="text" name="search" id="search" placeholder="">
+            <button type="submit">Поиск</button>
+        </form>  
 
+        <div id="resSearch" style="text-align: center; width: 685px; margin: 0 auto;"></div>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
