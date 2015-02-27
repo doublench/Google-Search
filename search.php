@@ -10,7 +10,7 @@ if (!empty($_POST['search'])) {
     $search = addslashes($search);
     $search = htmlspecialchars($search);
     $search = stripslashes($search);
-    $words = preg_split("/[[:space:],]+/", $search);  // Делим на слова
+    $words  = preg_split("/[[:space:],]+/", $search);  // Делим на слова
 } else {
     die("<h3>Начните вводить запрос...</h3>");
 }
